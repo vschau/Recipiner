@@ -19,6 +19,9 @@
 		2617BBC6247E3EF400F17AB1 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2617BBC5247E3EF400F17AB1 /* FavoriteTableViewController.swift */; };
 		2617BBC8247E3F2A00F17AB1 /* FavoriteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2617BBC7247E3F2A00F17AB1 /* FavoriteCollectionViewController.swift */; };
 		2617BBCA247E3F4E00F17AB1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2617BBC9247E3F4E00F17AB1 /* DetailViewController.swift */; };
+		2617BBCC247EB7A100F17AB1 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2617BBCB247EB7A100F17AB1 /* ErrorResponse.swift */; };
+		265E9638247EFC7100197B24 /* bk.swiftx in Sources */ = {isa = PBXBuildFile; fileRef = 265E9637247EFC7100197B24 /* bk.swiftx */; };
+		265E963B247F121400197B24 /* Recipe+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265E963A247F121400197B24 /* Recipe+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		2617BBC5247E3EF400F17AB1 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		2617BBC7247E3F2A00F17AB1 /* FavoriteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewController.swift; sourceTree = "<group>"; };
 		2617BBC9247E3F4E00F17AB1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2617BBCB247EB7A100F17AB1 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		265E9637247EFC7100197B24 /* bk.swiftx */ = {isa = PBXFileReference; lastKnownFileType = text; path = bk.swiftx; sourceTree = "<group>"; };
+		265E963A247F121400197B24 /* Recipe+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +79,6 @@
 				2617BBBB247E3D1200F17AB1 /* Assets */,
 				2617BBA4247E3CE900F17AB1 /* AppDelegate.swift */,
 				2617BBA6247E3CE900F17AB1 /* SceneDelegate.swift */,
-				2617BBB2247E3CEC00F17AB1 /* LaunchScreen.storyboard */,
 				2617BBB5247E3CEC00F17AB1 /* Info.plist */,
 			);
 			path = Recipiner;
@@ -83,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				2617BBAA247E3CE900F17AB1 /* Main.storyboard */,
+				2617BBB2247E3CEC00F17AB1 /* LaunchScreen.storyboard */,
 				2617BBB0247E3CEC00F17AB1 /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -113,6 +119,7 @@
 		2617BBBE247E3D5C00F17AB1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				265E9639247F11F800197B24 /* Managed Object Extension */,
 				2617BBAD247E3CE900F17AB1 /* Recipiner.xcdatamodeld */,
 			);
 			path = Data;
@@ -130,8 +137,18 @@
 			isa = PBXGroup;
 			children = (
 				2617BBC2247E3DAD00F17AB1 /* RecipeResponse.swift */,
+				265E9637247EFC7100197B24 /* bk.swiftx */,
+				2617BBCB247EB7A100F17AB1 /* ErrorResponse.swift */,
 			);
 			path = Responses;
+			sourceTree = "<group>";
+		};
+		265E9639247F11F800197B24 /* Managed Object Extension */ = {
+			isa = PBXGroup;
+			children = (
+				265E963A247F121400197B24 /* Recipe+Extension.swift */,
+			);
+			path = "Managed Object Extension";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,10 +227,13 @@
 				2617BBA5247E3CE900F17AB1 /* AppDelegate.swift in Sources */,
 				2617BBC3247E3DAD00F17AB1 /* RecipeResponse.swift in Sources */,
 				2617BBC0247E3D7B00F17AB1 /* RecipeClient.swift in Sources */,
+				2617BBCC247EB7A100F17AB1 /* ErrorResponse.swift in Sources */,
 				2617BBC8247E3F2A00F17AB1 /* FavoriteCollectionViewController.swift in Sources */,
 				2617BBA7247E3CE900F17AB1 /* SceneDelegate.swift in Sources */,
 				2617BBAF247E3CE900F17AB1 /* Recipiner.xcdatamodeld in Sources */,
+				265E963B247F121400197B24 /* Recipe+Extension.swift in Sources */,
 				2617BBC6247E3EF400F17AB1 /* FavoriteTableViewController.swift in Sources */,
+				265E9638247EFC7100197B24 /* bk.swiftx in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
