@@ -26,6 +26,7 @@
 		265E9642247F2C7900197B24 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265E9641247F2C7900197B24 /* Cell.swift */; };
 		265E9644247F373500197B24 /* RecipeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265E9643247F373500197B24 /* RecipeCollectionCell.swift */; };
 		265E9647247F38EE00197B24 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265E9646247F38EE00197B24 /* UICollectionView+Extension.swift */; };
+		265E9649247F95D900197B24 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265E9648247F95D900197B24 /* UIImage+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		265E9641247F2C7900197B24 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		265E9643247F373500197B24 /* RecipeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionCell.swift; sourceTree = "<group>"; };
 		265E9646247F38EE00197B24 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		265E9648247F95D900197B24 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				265E9646247F38EE00197B24 /* UICollectionView+Extension.swift */,
+				265E9648247F95D900197B24 /* UIImage+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				2617BBA7247E3CE900F17AB1 /* SceneDelegate.swift in Sources */,
 				265E9642247F2C7900197B24 /* Cell.swift in Sources */,
 				2617BBAF247E3CE900F17AB1 /* Recipiner.xcdatamodeld in Sources */,
+				265E9649247F95D900197B24 /* UIImage+Extension.swift in Sources */,
 				265E963B247F121400197B24 /* Recipe+Extension.swift in Sources */,
 				265E9644247F373500197B24 /* RecipeCollectionCell.swift in Sources */,
 				2617BBC6247E3EF400F17AB1 /* FavoriteTableViewController.swift in Sources */,

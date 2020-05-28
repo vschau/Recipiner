@@ -42,11 +42,10 @@ class MainViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        recipeIngredients.text = "Ingredients"
-//        recipeInstructions.text = "Instruction"
+        view.bringSubviewToFront(activityIndicator)
         /// disable fav btn until finish loading recipe
         addFavoriteButton.isEnabled = false
-        //loadRandomRecipe()
+        loadRandomRecipe()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,6 +105,10 @@ class MainViewController: UIViewController {
 
     // MARK: - Completion Handler
     func handleGetRandomRecipe(recipeDic: RecipeDic, error: Error?) {
+        if error != nil {
+            displayAlertView()
+            return
+        }
         assignRecipeProps(recipeDic: recipeDic)
 
         navigation.title = name
@@ -127,6 +130,18 @@ class MainViewController: UIViewController {
     }
 
     // MARK: - Helpers
+    func displayAlertView() {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+        }
+        let controller = UIAlertController(title: "Connection Failure", message: "", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { action in
+            self.dismiss(animated: true, completion: nil)
+        }
+        controller.addAction(okAction)
+        present(controller, animated: true, completion: nil)
+    }
+    
     func assignRecipeProps(recipeDic: RecipeDic) {
         id = getDicValue(dict: recipeDic, key: "idMeal")
         name = getDicValue(dict: recipeDic, key: "strMeal")
@@ -149,8 +164,6 @@ class MainViewController: UIViewController {
             }
         }
         ingredients = String(str.dropLast(2))
-        print(str)
-        print(instructions)
     }
 
     func getDicValue(dict: [String: String?], key: String) -> String? {
