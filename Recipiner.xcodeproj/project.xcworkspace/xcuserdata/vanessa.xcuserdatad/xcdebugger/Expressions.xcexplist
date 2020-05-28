@@ -3,6 +3,44 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "MainViewController.markFavorite(_:):MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "objects">
+            </PersistentString>
+            <PersistentString
+               value = "objects.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FavoriteTableViewController.setupFetchedResultsController():FavoriteTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fetchedResultsController.fetchedObject!.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FavoriteTableViewController.tableView(_:cellForRowAt:):FavoriteTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.count">
+            </PersistentString>
+            <PersistentString
+               value = "aRecipe.title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FavoriteTableViewController.tableView(_:numberOfRowsInSection:):FavoriteTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = " return fetchedResultsController.sections?[section].numberOfObjects ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MainViewController.assignRecipeProps(recipeDic:):MainViewController.swift">
          <PersistentStrings>
             <PersistentString

@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+// todo: use child object
+// todo: fix scroll layout
 class MainViewController: UIViewController {
     @IBOutlet weak var addFavoriteButton: UIBarButtonItem!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
@@ -33,9 +35,10 @@ class MainViewController: UIViewController {
         return managedObjectContext
     }()
 
-    private lazy var recipe: Recipe = {
-        return Recipe(context: self.childManagedObjectContext)
-    }()
+//    private lazy var recipe: Recipe = {
+//        return Recipe(context: self.childManagedObjectContext)
+//    }()
+    var recipe: Recipe!
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -43,6 +46,8 @@ class MainViewController: UIViewController {
         recipeIngredients.text = "Ingredients"
         recipeInstructions.text = "Instruction"
         //loadRandomRecipe()
+        
+        recipe = Recipe(context: context)
     }
     
     func loadRandomRecipe() {
@@ -58,16 +63,16 @@ class MainViewController: UIViewController {
         recipeIngredients.text = recipe.ingredients
         recipeInstructions.text = recipe.instructions
         
-        let url = recipeDic["strMealThumb"] ?? nil
-        if let url = url {
-            RecipeClient.downloadImage(url: url) { (data, error) in
-                guard let data = data else {
-                    return
-                }
-                self.recipe.img = data
-                self.recipeImage.image = UIImage(data: data)
-            }
-        }
+//        let url = recipeDic["strMealThumb"] ?? nil
+//        if let url = url {
+//            RecipeClient.downloadImage(url: url) { (data, error) in
+//                guard let data = data else {
+//                    return
+//                }
+//                self.recipe.img = data
+//                self.recipeImage.image = UIImage(data: data)
+//            }
+//        }
     }
     
     func assignRecipeProps(recipeDic: RecipeDic) {
@@ -93,9 +98,9 @@ class MainViewController: UIViewController {
             }
         }
         recipe.ingredients = String(ingredient.dropLast(2))
-        print(recipe.id)
-        print(recipe.title)
-        print(recipe.ingredients)
+//        print(recipe.id)
+//        print(recipe.title)
+//        print(recipe.ingredients)
     }
   
     func getDicValue(dict: [String: String?], key: String) -> String? {
@@ -119,8 +124,24 @@ class MainViewController: UIViewController {
 //    }
 
     @IBAction func markFavorite(_ sender: UIBarButtonItem) {
+        do {
+            try context.save()
+            let isSaved = !recipe.objectID.isTemporaryID
+            print(recipe.title!, " is saved?", isSaved)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        // Test 1 fetch
+        do {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipe")
+            fetchRequest.fetchLimit = 1
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+            var objects: [Recipe]
+            try objects = context.fetch(fetchRequest) as! [Recipe]
+            print("First persistent object:", objects[0].title!)
+        } catch {}
     }
-
 
     @IBAction func refreshRecipe(_ sender: UIBarButtonItem) {
         loadRandomRecipe()
