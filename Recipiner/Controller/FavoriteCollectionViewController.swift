@@ -23,6 +23,12 @@ class FavoriteCollectionViewController: UICollectionViewController {
         setUpFlowLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupFetchedResultsController()
+        collectionView.reloadData()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         fetchedResultsController = nil
@@ -32,7 +38,7 @@ class FavoriteCollectionViewController: UICollectionViewController {
         let fetchRequest:NSFetchRequest<Recipe> = Recipe.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: "recipe")
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         do {
             try fetchedResultsController.performFetch()
             print("Collection fetched:", fetchedResultsController.fetchedObjects?.count)
@@ -69,6 +75,13 @@ extension FavoriteCollectionViewController {
             cell.thumbnail.image = UIImage(data: img)
         }
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Col index:", indexPath.row)
+        let detailController = storyboard!.instantiateViewController(withIdentifier: "DetailControllerId") as! DetailViewController
+        detailController.recipe = fetchedResultsController.object(at: indexPath)
+        self.navigationController!.pushViewController(detailController, animated: true)
     }
     
 //    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {

@@ -10,9 +10,20 @@ import Foundation
 import UIKit
 
 class DetailViewController: UIViewController {
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var ingredientTextView: UITextView!
+    @IBOutlet weak var InstructionTextView: UITextView!
+    var recipe: Recipe!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.title = recipe.title
+        if let img = recipe.img {
+            imageView.image = UIImage(data: img)
+        }
+        ingredientTextView.text = recipe.ingredients
+        InstructionTextView.text = recipe.instructions
     }
 
 

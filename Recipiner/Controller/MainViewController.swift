@@ -19,26 +19,25 @@ class MainViewController: UIViewController {
     @IBOutlet weak var recipeInstructions: UITextView!
     @IBOutlet weak var navigation: UINavigationItem!
     
+    var id: String!
+    var name: String!
+    var img: Data!
+    var ingredients: String!
+    var instructions: String!
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     // MARK: -
 //    var managedObjectContext: NSManagedObjectContext!
-    
-    private lazy var childManagedObjectContext: NSManagedObjectContext = {
-        // Initialize Managed Object Context
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-
-        // Configure Managed Object Context
-//        managedObjectContext.parent = self.managedObjectContext
-        managedObjectContext.parent = context
-
-        return managedObjectContext
-    }()
+//    private lazy var childManagedObjectContext: NSManagedObjectContext = {
+//        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//        managedObjectContext.parent = context
+//        return managedObjectContext
+//    }()
 
 //    private lazy var recipe: Recipe = {
 //        return Recipe(context: self.childManagedObjectContext)
 //    }()
-    var recipe: Recipe!
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -46,8 +45,6 @@ class MainViewController: UIViewController {
         recipeIngredients.text = "Ingredients"
         recipeInstructions.text = "Instruction"
         //loadRandomRecipe()
-        
-        recipe = Recipe(context: context)
     }
     
     func loadRandomRecipe() {
@@ -56,33 +53,32 @@ class MainViewController: UIViewController {
 
     // id, img, ingredients, instructions    title
     func handleGetRandomRecipe(recipeDic: RecipeDic, error: Error?) {
-        //let recipe = Recipe(context: context)
         assignRecipeProps(recipeDic: recipeDic)
         
-        navigation.title = recipe.title
-        recipeIngredients.text = recipe.ingredients
-        recipeInstructions.text = recipe.instructions
+        navigation.title = name
+        recipeIngredients.text = ingredients
+        recipeInstructions.text = instructions
         
-//        let url = recipeDic["strMealThumb"] ?? nil
-//        if let url = url {
-//            RecipeClient.downloadImage(url: url) { (data, error) in
-//                guard let data = data else {
-//                    return
-//                }
-//                self.recipe.img = data
-//                self.recipeImage.image = UIImage(data: data)
-//            }
-//        }
+        let url = recipeDic["strMealThumb"] ?? nil
+        if let url = url {
+            RecipeClient.downloadImage(url: url) { (data, error) in
+                guard let data = data else {
+                    return
+                }
+                self.img = data
+                self.recipeImage.image = UIImage(data: data)
+            }
+        }
     }
     
     func assignRecipeProps(recipeDic: RecipeDic) {
-        recipe.id = getDicValue(dict: recipeDic, key: "idMeal")
-        recipe.title = getDicValue(dict: recipeDic, key: "strMeal")
-        recipe.instructions = getDicValue(dict: recipeDic, key: "strInstructions")
+        id = getDicValue(dict: recipeDic, key: "idMeal")
+        name = getDicValue(dict: recipeDic, key: "strMeal")
+        instructions = getDicValue(dict: recipeDic, key: "strInstructions")
         
         // Build ingredients string
         // Todo: use an array to store ingredients instead
-        var ingredient = ""
+        var str = ""
         for i in 4...20 {
             let ingKey = "strIngredient" + String(i)
             let anIngredient = getDicValue(dict: recipeDic, key: ingKey)
@@ -91,16 +87,16 @@ class MainViewController: UIViewController {
             // key exists in dic
             if let anIngredient = anIngredient, !anIngredient.isEmpty {
                 if let ms = meassure, !ms.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                    ingredient.append("\(anIngredient): \(ms)\n")
+                    str.append("\(anIngredient): \(ms)\n")
                 } else {
-                    ingredient.append(anIngredient + "\n")
+                    str.append(anIngredient + "\n")
                 }
             }
         }
-        recipe.ingredients = String(ingredient.dropLast(2))
-//        print(recipe.id)
-//        print(recipe.title)
-//        print(recipe.ingredients)
+        ingredients = String(str.dropLast(2))
+//        print(id)
+//        print(name)
+//        print(ingredients)
     }
   
     func getDicValue(dict: [String: String?], key: String) -> String? {
@@ -124,6 +120,12 @@ class MainViewController: UIViewController {
 //    }
 
     @IBAction func markFavorite(_ sender: UIBarButtonItem) {
+        let recipe = Recipe(context: context)
+        recipe.id = id
+        recipe.title = name
+        recipe.img = img
+        recipe.ingredients = ingredients
+        recipe.instructions = instructions
         do {
             try context.save()
             let isSaved = !recipe.objectID.isTemporaryID
@@ -147,5 +149,3 @@ class MainViewController: UIViewController {
         loadRandomRecipe()
     }
 }
-
-
