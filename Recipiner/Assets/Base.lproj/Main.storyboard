@@ -16,15 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Eg-eW-y4E">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="NaQ-pJ-xH2">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Eg-eW-y4E">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbc-kg-ob5" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="665"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbc-kg-ob5" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="566.5"/>
                                         <subviews>
-                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="NaQ-pJ-xH2">
-                                                <rect key="frame" x="188.5" y="368.5" width="37" height="37"/>
-                                            </activityIndicatorView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="f2i-Ld-gla" userLabel="Recipe Image">
                                                 <rect key="frame" x="87" y="20" width="240" height="150"/>
                                                 <constraints>
@@ -42,11 +42,12 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tht-19-NhJ" userLabel="Recipe Instruction">
-                                                <rect key="frame" x="20" y="222.5" width="374" height="442.5"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tht-19-NhJ" userLabel="Recipe Instruction">
+                                                <rect key="frame" x="20" y="222.5" width="374" height="300"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="250" constant="300" id="PDo-cl-uQ5"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="Rza-wL-LsS"/>
                                                 </constraints>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -94,10 +95,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="NaQ-pJ-xH2" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Bav-XP-8b1"/>
                             <constraint firstItem="7Eg-eW-y4E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HUw-2A-BVB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7Eg-eW-y4E" secondAttribute="bottom" id="Kpk-9P-Rbl"/>
-                            <constraint firstItem="NaQ-pJ-xH2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NKm-Le-VXM"/>
+                            <constraint firstItem="NaQ-pJ-xH2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="OFP-qq-H1N"/>
+                            <constraint firstItem="NaQ-pJ-xH2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pbe-m9-seT"/>
                             <constraint firstItem="7Eg-eW-y4E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="RRU-dt-noM"/>
                             <constraint firstItem="7Eg-eW-y4E" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VkN-U2-cbx"/>
                             <constraint firstItem="wLs-ZM-KrE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ezy-09-yd3"/>
@@ -214,11 +215,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bfl-jM-q0J">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bfl-jM-q0J">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YBf-uE-QO0" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="8" width="398" height="802"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBf-uE-QO0" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="522.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="nJ9-0D-USs" userLabel="Recipe Image">
                                                 <rect key="frame" x="79" y="20" width="240" height="150"/>
@@ -237,10 +238,11 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zzy-yl-NBK" userLabel="Recipe Instruction">
-                                                <rect key="frame" x="20" y="346" width="358" height="300"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zzy-yl-NBK" userLabel="Recipe Instruction">
+                                                <rect key="frame" x="20" y="222.5" width="358" height="300"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="BDt-Ze-OQB"/>
                                                     <constraint firstAttribute="height" priority="250" constant="300" id="Dp3-fQ-82D"/>
                                                 </constraints>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -356,98 +358,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cSr-VU-Cn5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3716" y="-233"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="eNh-2P-GqH">
-            <objects>
-                <viewController id="6ie-Ny-dSa" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dMv-42-98W">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2d-Bg-jUq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7Y-WV-vh8" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1135.5"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0Dw-8d-o96" userLabel="Top Text View">
-                                                <rect key="frame" x="20" y="128" width="374" height="128"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="128" id="sNY-dO-cRO"/>
-                                                </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. End 1st field</string>
-                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0Jd-gK-5to" userLabel="Bottom Text View">
-                                                <rect key="frame" x="20" y="264" width="374" height="851.5"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" priority="250" constant="810" id="gt5-nr-V4d"/>
-                                                </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. BOttom here</string>
-                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1EE-6a-gPh">
-                                                <rect key="frame" x="157" y="20" width="100" height="100"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="3wa-bF-wmC"/>
-                                                    <constraint firstAttribute="height" constant="100" id="VN9-t8-CZL"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstItem="0Dw-8d-o96" firstAttribute="leading" secondItem="V7Y-WV-vh8" secondAttribute="leading" constant="20" symbolic="YES" id="BgT-A4-voZ"/>
-                                            <constraint firstItem="0Jd-gK-5to" firstAttribute="top" secondItem="0Dw-8d-o96" secondAttribute="bottom" constant="8" symbolic="YES" id="D8V-X5-KtK"/>
-                                            <constraint firstItem="0Dw-8d-o96" firstAttribute="top" secondItem="1EE-6a-gPh" secondAttribute="bottom" constant="8" symbolic="YES" id="Hur-Q3-v6y"/>
-                                            <constraint firstAttribute="bottom" secondItem="0Jd-gK-5to" secondAttribute="bottom" constant="20" symbolic="YES" id="J2I-fO-F1J"/>
-                                            <constraint firstItem="0Jd-gK-5to" firstAttribute="leading" secondItem="V7Y-WV-vh8" secondAttribute="leading" constant="20" symbolic="YES" id="LNG-UU-WBc"/>
-                                            <constraint firstAttribute="trailing" secondItem="0Jd-gK-5to" secondAttribute="trailing" constant="20" symbolic="YES" id="bHv-fW-ham"/>
-                                            <constraint firstAttribute="trailing" secondItem="0Dw-8d-o96" secondAttribute="trailing" constant="20" symbolic="YES" id="dE3-OK-Zri"/>
-                                            <constraint firstItem="1EE-6a-gPh" firstAttribute="centerX" secondItem="V7Y-WV-vh8" secondAttribute="centerX" id="lgX-dD-5bG"/>
-                                            <constraint firstItem="1EE-6a-gPh" firstAttribute="top" secondItem="V7Y-WV-vh8" secondAttribute="top" constant="20" symbolic="YES" id="qb2-9D-Coh"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="V7Y-WV-vh8" firstAttribute="top" secondItem="E2d-Bg-jUq" secondAttribute="top" id="2lQ-AW-jip"/>
-                                    <constraint firstAttribute="trailing" secondItem="V7Y-WV-vh8" secondAttribute="trailing" id="C4O-xS-Uyw"/>
-                                    <constraint firstAttribute="bottom" secondItem="V7Y-WV-vh8" secondAttribute="bottom" id="WM8-fx-YyL"/>
-                                    <constraint firstItem="V7Y-WV-vh8" firstAttribute="leading" secondItem="E2d-Bg-jUq" secondAttribute="leading" id="bgf-zP-Nae"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="aUD-mn-24a"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="bPT-Ha-HT3"/>
-                            </scrollView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajZ-HF-vP2">
-                                <rect key="frame" x="0.0" y="852" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="slw-a3-eHK"/>
-                                    <barButtonItem title="Refresh Button" id="Z80-Bw-6cq"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tom-fs-Pz0"/>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="ykN-o9-NW8" firstAttribute="trailing" secondItem="E2d-Bg-jUq" secondAttribute="trailing" id="3hz-O7-E6p"/>
-                            <constraint firstItem="E2d-Bg-jUq" firstAttribute="top" secondItem="ykN-o9-NW8" secondAttribute="top" id="aWx-f3-mi6"/>
-                            <constraint firstItem="ykN-o9-NW8" firstAttribute="bottom" secondItem="E2d-Bg-jUq" secondAttribute="bottom" id="jHf-Nm-Fgs"/>
-                            <constraint firstItem="E2d-Bg-jUq" firstAttribute="leading" secondItem="ykN-o9-NW8" secondAttribute="leading" id="tvN-em-XuI"/>
-                            <constraint firstItem="V7Y-WV-vh8" firstAttribute="width" secondItem="dMv-42-98W" secondAttribute="width" id="zf2-yT-4mh"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ykN-o9-NW8"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ShD-Ke-eVp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-562.31884057971024" y="101.78571428571428"/>
         </scene>
         <!--MainNav-->
         <scene sceneID="Ctk-cU-haE">
