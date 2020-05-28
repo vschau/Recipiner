@@ -13,6 +13,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var ingredientTextView: UITextView!
     @IBOutlet weak var InstructionTextView: UITextView!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recipe: Recipe!
     
     override func viewDidLoad() {
@@ -26,5 +29,14 @@ class DetailViewController: UIViewController {
         InstructionTextView.text = recipe.instructions
     }
 
-
+    @IBAction func deleteTapped(_ sender: UIBarButtonItem) {
+        context.delete(recipe)
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+        self.navigationController!.popViewController(animated: true)
+    }
+    
 }

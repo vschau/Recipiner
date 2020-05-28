@@ -16,6 +16,7 @@ class FavoriteCollectionViewController: UICollectionViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var fetchedResultsController: NSFetchedResultsController<Recipe>!
     
+    // MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class FavoriteCollectionViewController: UICollectionViewController {
         fetchedResultsController = nil
     }
     
+    // MARK: - Set up
     fileprivate func setupFetchedResultsController() {
         let fetchRequest:NSFetchRequest<Recipe> = Recipe.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
@@ -41,9 +43,8 @@ class FavoriteCollectionViewController: UICollectionViewController {
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         do {
             try fetchedResultsController.performFetch()
-            print("Collection fetched:", fetchedResultsController.fetchedObjects?.count)
         } catch {
-            print("The recipe fetch could not be performed: \(error.localizedDescription)")
+            print(error.localizedDescription)
         }
     }
 
@@ -58,6 +59,7 @@ class FavoriteCollectionViewController: UICollectionViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension FavoriteCollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
@@ -73,27 +75,15 @@ extension FavoriteCollectionViewController {
         let aRecipe = fetchedResultsController.object(at: indexPath)
         if let img = aRecipe.img {
             cell.thumbnail.image = UIImage(data: img)
+        } else {
+            cell.thumbnail.image = UIImage(named: "placeholder")
         }
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Col index:", indexPath.row)
         let detailController = storyboard!.instantiateViewController(withIdentifier: "DetailControllerId") as! DetailViewController
         detailController.recipe = fetchedResultsController.object(at: indexPath)
         self.navigationController!.pushViewController(detailController, animated: true)
     }
-    
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
-//        if urlArray.count > indexPath.row {
-//            urlArray.remove(at: indexPath.row)
-//        }
-//        let photoToDelete = fetchedResultsController.object(at: indexPath)
-//        context.delete(photoToDelete)
-//        do {
-//            try context.save()
-//        } catch {
-//            print("The photo deletion could not be performed: \(error.localizedDescription)")
-//        }
-//    }
 }

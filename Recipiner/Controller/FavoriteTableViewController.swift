@@ -14,6 +14,7 @@ class FavoriteTableViewController: UITableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var fetchedResultsController: NSFetchedResultsController<Recipe>!
     
+    // MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFetchedResultsController()
@@ -30,6 +31,7 @@ class FavoriteTableViewController: UITableViewController {
         fetchedResultsController = nil
     }
     
+    // MARK: - Set up
     fileprivate func setupFetchedResultsController() {
         let fetchRequest:NSFetchRequest<Recipe> = Recipe.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
@@ -38,9 +40,8 @@ class FavoriteTableViewController: UITableViewController {
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
-            print("After fetched:", fetchedResultsController.fetchedObjects?.count)
         } catch {
-            print("The fetch could not be performed: \(error.localizedDescription)")
+            print(error.localizedDescription)
         }
     }
     
@@ -53,18 +54,13 @@ class FavoriteTableViewController: UITableViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension FavoriteTableViewController  {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        do {
-            print("section", section)
-            print("fetchedResultsController.sections?.count", fetchedResultsController.sections?.count)
-            print("fetchedResultsController.fetchedObjects?.count", fetchedResultsController.fetchedObjects?.count)
-            print("fetchedResultsController.sections?[section].numberOfObjects:", fetchedResultsController.sections?[0].numberOfObjects)
-        } catch {}
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
 
@@ -75,6 +71,8 @@ extension FavoriteTableViewController  {
         cell.title.text = aRecipe.title
         if let img = aRecipe.img {
             cell.thumbnail.image = UIImage(data: img)
+        } else {
+            cell.thumbnail.image = UIImage(named: "placeholder")
         }
         return cell
     }
@@ -84,15 +82,9 @@ extension FavoriteTableViewController  {
         detailController.recipe = fetchedResultsController.object(at: indexPath)
         self.navigationController!.pushViewController(detailController, animated: true)
     }
-
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        switch editingStyle {
-//            case .delete: deleteRecipe(at: indexPath)
-//        default: () // Unsupported
-//        }
-//    }
 }
 
+// MARK: - NSFetchedResultsControllerDelegate
 extension FavoriteTableViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {

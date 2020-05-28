@@ -45,6 +45,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="NaQ-pJ-xH2">
+                                        <rect key="frame" x="188.5" y="344" width="37" height="37"/>
+                                    </activityIndicatorView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2E7-iy-gkY" userLabel="Recipe Ingredients">
                                         <rect key="frame" x="20" y="180" width="374" height="36.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -59,6 +62,8 @@
                                     <constraint firstItem="2E7-iy-gkY" firstAttribute="centerX" secondItem="7Eg-eW-y4E" secondAttribute="centerX" id="LUF-c3-AOq"/>
                                     <constraint firstItem="tht-19-NhJ" firstAttribute="top" secondItem="2E7-iy-gkY" secondAttribute="bottom" constant="38" id="MnS-VP-OZo"/>
                                     <constraint firstItem="f2i-Ld-gla" firstAttribute="centerX" secondItem="7Eg-eW-y4E" secondAttribute="centerX" id="Tnp-2G-fBR"/>
+                                    <constraint firstItem="NaQ-pJ-xH2" firstAttribute="centerY" secondItem="7Eg-eW-y4E" secondAttribute="centerY" id="V10-jA-Ee0"/>
+                                    <constraint firstItem="NaQ-pJ-xH2" firstAttribute="centerX" secondItem="7Eg-eW-y4E" secondAttribute="centerX" id="YjN-x1-2nm"/>
                                     <constraint firstItem="tht-19-NhJ" firstAttribute="centerX" secondItem="7Eg-eW-y4E" secondAttribute="centerX" id="Z4f-8G-z73"/>
                                     <constraint firstItem="2E7-iy-gkY" firstAttribute="leading" secondItem="7Eg-eW-y4E" secondAttribute="leading" constant="20" id="c5G-sT-8dE"/>
                                     <constraint firstItem="2E7-iy-gkY" firstAttribute="top" secondItem="f2i-Ld-gla" secondAttribute="bottom" constant="10" id="hjU-Ls-gFj"/>
@@ -83,7 +88,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="jZs-ZW-8ey">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="plus" catalog="system" id="pkV-cS-SN8" userLabel="Mark Favorite Button">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="heart" catalog="system" id="pkV-cS-SN8" userLabel="Mark Favorite Button">
                             <connections>
                                 <action selector="markFavorite:" destination="BYZ-38-t0r" id="3eF-sd-3Q6"/>
                             </connections>
@@ -95,6 +100,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="NaQ-pJ-xH2" id="0Vp-d9-G8M"/>
                         <outlet property="addFavoriteButton" destination="pkV-cS-SN8" id="a0a-ZK-zRb"/>
                         <outlet property="navigation" destination="jZs-ZW-8ey" id="jMS-Lq-0Qn"/>
                         <outlet property="recipeImage" destination="f2i-Ld-gla" id="WrU-S0-zOJ"/>
@@ -148,7 +154,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ZAE-9D-hpX" userLabel="Thumbnail">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ZAE-9D-hpX" userLabel="Thumbnail">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         </imageView>
                                     </subviews>
@@ -239,9 +245,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Recipe Detail" id="Bk4-Ye-23P">
                         <barButtonItem key="backBarButtonItem" title="Back" id="hsr-g0-xhi"/>
+                        <barButtonItem key="rightBarButtonItem" image="trash" catalog="system" id="6Ik-wX-pwx">
+                            <connections>
+                                <action selector="deleteTapped:" destination="fGf-e4-D3f" id="RCV-DV-A1u"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="InstructionTextView" destination="Zzy-yl-NBK" id="VGS-da-ad7"/>
+                        <outlet property="deleteButton" destination="6Ik-wX-pwx" id="Zcl-uF-l7a"/>
                         <outlet property="imageView" destination="nJ9-0D-USs" id="ODc-wl-8dT"/>
                         <outlet property="ingredientTextView" destination="fF4-WD-ree" id="WZ4-k9-7Rf"/>
                     </connections>
@@ -326,9 +338,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="placeholder" width="100" height="100"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rectangle.grid.3x2.fill" catalog="system" width="128" height="101"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
     </resources>
 </document>
