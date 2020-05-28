@@ -42,8 +42,8 @@ class MainViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        recipeIngredients.text = "Ingredients"
-        recipeInstructions.text = "Instruction"
+//        recipeIngredients.text = "Ingredients"
+//        recipeInstructions.text = "Instruction"
         /// disable fav btn until finish loading recipe
         addFavoriteButton.isEnabled = false
         //loadRandomRecipe()
@@ -149,6 +149,8 @@ class MainViewController: UIViewController {
             }
         }
         ingredients = String(str.dropLast(2))
+        print(str)
+        print(instructions)
     }
 
     func getDicValue(dict: [String: String?], key: String) -> String? {
